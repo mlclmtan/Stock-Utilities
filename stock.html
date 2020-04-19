@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proj:stock</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: #f2f6e9;
+        }
+        body .container{
+            zoom: 1.3; 
+        }
+        
+        /*--- navigation bar ---*/
+        .navbar {
+            background:#6ab446;
+        }
+        .nav-link,
+        .navbar-brand {
+            color: #fff;
+            cursor: pointer;
+        }
+        .navbar-brand span {
+            line-height:1.2;
+            font-weight: 200;
+            display:inline-block;
+            vertical-align:middle;
+            padding:0 0 0 15px;
+        }
+        .nav-link {
+            margin-right: 1em !important;
+        }
+        .nav-link:hover {
+            color: #000;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        
+        .header {
+            background-image: url('https://i.imgur.com/X4uaQPP.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            min-height: 100%;
+            min-width: 100%;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .description {
+            left: 50%;
+            position: absolute;
+            top: 45%;
+            transform: translate(-50%, -55%);
+            text-align: center;
+        }
+        .description h1 {
+            color: #6ab446;
+        }
+        .description p {
+            color: #fff;
+            font-size: 1.3rem;
+            line-height: 1.5;
+        }
+
+        .description button {
+            border:1px solid #6ab446;
+            background:#6ab446;
+            border-radius: 0;
+            color:#fff;
+        }
+        .description button:hover {
+            border:1px solid #fff;
+            background:#fff;
+            color:#000;
+        }
+    </style>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand" href="https://i.imgur.com/gvpT8P1.jpg"><img src="https://i.imgur.com/gvpT8P1.jpg" style="width:45px;height:45px;vertical-align:middle"><span>37hub</span></a>
+        <button class="navbar-toggler navbar-dark" data-toggle="collapse" data-target="#main-navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- <header class="page-header header container-fluid">
+        <div class="overlay">
+            <div class="description">
+                <h1>Taiwan Can Help</h1>
+                <p>爛瑜衝樹</p>
+                <button class="btn btn-outline-secondary btn-lg" onclick="window.location.href = 'https://www.chinatimes.com/realtimenews/20190805002138-260407?chdtv';">聯絡韓市長！</button>
+            </div>
+        </div>
+    </header> -->
+
+    <div class="container">
+        <div class="row  justify-content-md-center  my-5">
+            <div class="col-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="price" placeholder="價" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" onclick="add(1)">買</button>
+                      <button class="btn btn-outline-secondary" type="button" onclick="add(-1)">賣</button>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-3">
+                <input class="form-control" id="lot" value="1" placeholder="張">
+            </div>
+
+            <!-- <div class="col-3">
+                <div class="form-group">
+                    <label for="exampleInputPassword1"></label>
+                    <input class="form-control" id="sell" placeholder="價">
+                </div>
+            <button type="submit" class="btn btn-primary" onclick="add(-1)">賣</button>
+            </div> -->
+
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col-5">
+                <ul class="list-group" id="list"></ul>
+            </div>
+            
+            <div class="col-5">
+                <ul class="list-group">
+                    <li class="list-group-item" id="up">多：</li>
+                    <li class="list-group-item" id="upfee" style="font-style: italic; color: #BEBEBE;">手續費：</li>
+                    <li class="list-group-item" id="down">空：</li>
+                    <div class="row">
+                        <div class="col-6" style="padding-right: 0;">
+                            <li class="list-group-item" id="downfee" style="font-style: italic; color: #BEBEBE;">手續費：</li>
+                        </div>
+                        <div class="col-6" style="padding-left: 0;">
+                            <li class="list-group-item" id="tax" style="font-style: italic; color: #BEBEBE;"> 稅：</li>
+                        </div>
+                    </div>
+                    <li class="list-group-item" id="summary">純利：</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+   
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.header').height($(window).height());
+        })
+
+        let price =0, up=[], down=[], i=0,uptotal=0, downtotal=0, total=0, upfee=0, downfee=0, taxs=0;
+        let add = (x) => {
+            let lot=1;
+            if(x==1){
+                if(document.querySelector("#price").value==''){
+                    return 0;
+                }
+                price = document.querySelector("#price").value * -1;
+                if(document.querySelector("#lot").value!==''){
+                    lot = document.querySelector("#lot").value;
+                }
+                document.querySelector("#price").value = '';
+                document.querySelector("#lot").value = '1';
+            }else if(x==-1) {
+                if(document.querySelector("#price").value==''){
+                    return 0;
+                }
+                price = document.querySelector("#price").value;
+                if(document.querySelector("#lot").value!==''){
+                    lot = document.querySelector("#lot").value;
+                }
+                document.querySelector("#price").value = '';
+                document.querySelector("#lot").value = '1';
+            }
+            for(let j=0;j<lot;j++){
+                let node = document.createElement("li");
+                let textnode = document.createTextNode(price);
+                node.setAttribute('class','list-group-item');
+                node.appendChild(textnode);
+                document.querySelector("#list").appendChild(node);
+            }
+            
+            count(x);
+        }
+
+        let count = (x) =>{
+            if(x==1){
+                uptotal=(price*1000)+uptotal;
+                let fee = (price*1000)*0.001425*0.3*-1;
+                upfee+=fee;
+                document.querySelector("#upfee").innerHTML = '手續費：' + Math.round(upfee);
+            }else if(x==-1){
+                downtotal=(price*1000)+downtotal;
+                let fee = (price*1000)*0.001425*0.3;
+                downfee+=fee;
+                let tax = (price*1000)*0.003/2;
+                taxs+=tax;
+                document.querySelector("#downfee").innerHTML = '手續費：' + Math.round(downfee);
+                document.querySelector("#tax").innerHTML = ' 稅：' + Math.round(taxs);
+            }
+            total = uptotal + downtotal - upfee - downfee - taxs;
+            document.querySelector("#up").innerHTML = '多：' + numberWithCommas(uptotal);
+            document.querySelector("#down").innerHTML = '空：' + numberWithCommas(downtotal);
+            document.querySelector("#summary").innerHTML = '純利：' + numberWithCommas(Math.round(total));
+        }
+
+        let numberWithCommas = (x) =>{
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    </script>
+</body>
+</html>
