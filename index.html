@@ -90,7 +90,7 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-md">
+    <nav class="navbar sticky-top navbar-expand-md">
         <a class="navbar-brand" href="https://i.imgur.com/gvpT8P1.jpg"><img src="https://i.imgur.com/gvpT8P1.jpg" style="width:45px;height:45px;vertical-align:middle"><span>37hub</span></a>
         <button class="navbar-toggler navbar-dark" data-toggle="collapse" data-target="#main-navigation">
             <span class="navbar-toggler-icon"></span>
@@ -135,15 +135,6 @@
             <div class="col-3">
                 <input class="form-control" id="lot" value="1" placeholder="張">
             </div>
-
-            <!-- <div class="col-3">
-                <div class="form-group">
-                    <label for="exampleInputPassword1"></label>
-                    <input class="form-control" id="sell" placeholder="價">
-                </div>
-            <button type="submit" class="btn btn-primary" onclick="add(-1)">賣</button>
-            </div> -->
-
         </div>
 
         <div class="row justify-content-md-center">
@@ -182,9 +173,8 @@
             $('.header').height($(window).height());
         })
 
-        let price =0, up=[], down=[], i=0,uptotal=0, downtotal=0, total=0, upfee=0, downfee=0, taxs=0;
+        let price =0, up=[], down=[], i=0,uptotal=0, downtotal=0, total=0, upfee=0, downfee=0, taxs=0, lot=1;
         let add = (x) => {
-            let lot=1;
             if(x==1){
                 if(document.querySelector("#price").value==''){
                     return 0;
@@ -219,16 +209,17 @@
 
         let count = (x) =>{
             if(x==1){
-                uptotal=(price*1000)+uptotal;
-                let fee = (price*1000)*0.001425*0.3*-1;
-                upfee+=fee;
+                for(let a=0; a<lot; a++){
+                    uptotal=(price*1000)+uptotal;
+                    upfee += (price*1000)*0.001425*0.3*-1;
+                }
                 document.querySelector("#upfee").innerHTML = '手續費：' + Math.round(upfee);
             }else if(x==-1){
-                downtotal=(price*1000)+downtotal;
-                let fee = (price*1000)*0.001425*0.3;
-                downfee+=fee;
-                let tax = (price*1000)*0.003/2;
-                taxs+=tax;
+                for(let a=0; a<lot; a++){
+                    downtotal=(price*1000)+downtotal;
+                    downfee += (price*1000)*0.001425*0.3;
+                    taxs+=(price*1000)*0.003/2;
+                }
                 document.querySelector("#downfee").innerHTML = '手續費：' + Math.round(downfee);
                 document.querySelector("#tax").innerHTML = ' 稅：' + Math.round(taxs);
             }
@@ -241,6 +232,7 @@
         let numberWithCommas = (x) =>{
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
+        
     </script>
 </body>
 </html>
