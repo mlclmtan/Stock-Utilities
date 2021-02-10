@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Proj:stock</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <nav class="navbar sticky-top navbar-expand-md">
-        <a class="navbar-brand" href="https://i.imgur.com/gvpT8P1.jpg"><img src="https://i.imgur.com/gvpT8P1.jpg" style="width:45px;height:45px;vertical-align:middle"><span>37hub</span></a>
-        <button class="navbar-toggler navbar-dark" data-toggle="collapse" data-target="#main-navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navigation">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">當衝</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="stock2.html">成本試算</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
+      <a class="navbar-brand" href="https://i.imgur.com/gvpT8P1.jpg"
+        ><img
+          src="https://i.imgur.com/gvpT8P1.jpg"
+          style="width: 45px; height: 45px; vertical-align: middle"
+        /><span>37hub</span></a
+      >
+      <button
+        class="navbar-toggler navbar-dark"
+        data-toggle="collapse"
+        data-target="#main-navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="main-navigation">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="https://daytrade.mlclmtan.ga/">當衝 V2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">當衝</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="stock2.html">成本試算</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
     </nav>
     <!-- <header class="page-header header container-fluid">
         <div class="overlay">
@@ -39,164 +56,234 @@
     </header> -->
 
     <div class="container">
-        <div class="row justify-content-md-center mt-1">
-            <span class="align-self-center mr-2">Trade History: </span>
-            <div class="dropdown mx-2">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  By Stock 
-                </button>
-                <div class="dropdown-menu">
-                  <h5 class="dropdown-header">2330</h5>
-                  <a class="dropdown-item" href="#">4/15</a>
-                  <a class="dropdown-item" href="#">4/16</a>
-                  <a class="dropdown-item" href="#">4/17</a>
-                  <h5 class="dropdown-header">2317</h5>
-                  <a class="dropdown-item" href="#">4/16</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">More 最近3交易天</a>
-                </div>
+      <div class="row justify-content-md-center mt-1">
+        <span class="align-self-center mr-2">Trade History: </span>
+        <div class="dropdown mx-2">
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            data-toggle="dropdown"
+          >
+            By Stock
+          </button>
+          <div class="dropdown-menu">
+            <h5 class="dropdown-header">2330</h5>
+            <a class="dropdown-item" href="#">4/15</a>
+            <a class="dropdown-item" href="#">4/16</a>
+            <a class="dropdown-item" href="#">4/17</a>
+            <h5 class="dropdown-header">2317</h5>
+            <a class="dropdown-item" href="#">4/16</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">More 最近3交易天</a>
+          </div>
+        </div>
+        <div class="dropdown mx-2">
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            data-toggle="dropdown"
+          >
+            By Date
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">4/15</a>
+            <a class="dropdown-item" href="#">4/16</a>
+            <a class="dropdown-item" href="#">4/17</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">More 最近3交易天</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-md-center my-5">
+        <div class="col-3">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              placeholder="價"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                id="buybtn"
+                type="button"
+                onclick="add(1)"
+              >
+                買
+              </button>
+              <button
+                class="btn btn-outline-secondary"
+                id="sellbtn"
+                type="button"
+                onclick="add(-1)"
+              >
+                賣
+              </button>
             </div>
-            <div class="dropdown mx-2">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  By Date 
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">4/15</a>
-                    <a class="dropdown-item" href="#">4/16</a>
-                    <a class="dropdown-item" href="#">4/17</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">More 最近3交易天</a>
-                </div>
-            </div>
+          </div>
         </div>
 
-        <div class="row  justify-content-md-center  my-5">
-            <div class="col-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="price" placeholder="價" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" id="buybtn" type="button" onclick="add(1)">買</button>
-                      <button class="btn btn-outline-secondary" id="sellbtn" type="button" onclick="add(-1)">賣</button>
-                    </div>
-                  </div>
-            </div>
+        <div class="col-3">
+          <input class="form-control" id="lot" value="1" placeholder="張" />
+        </div>
+      </div>
 
-            <div class="col-3">
-                <input class="form-control" id="lot" value="1" placeholder="張">
-            </div>
+      <div class="row justify-content-md-center">
+        <div class="col-5">
+          <ul class="list-group" id="list"></ul>
         </div>
 
-        <div class="row justify-content-md-center">
-            <div class="col-5">
-                <ul class="list-group" id="list"></ul>
+        <div class="col-5">
+          <ul class="list-group">
+            <li class="list-group-item" id="up">多：</li>
+            <li
+              class="list-group-item"
+              id="upfee"
+              style="font-style: italic; color: #bebebe"
+            >
+              手續費：
+            </li>
+            <li class="list-group-item" id="down">空：</li>
+            <div class="row">
+              <div class="col-6" style="padding-right: 0">
+                <li
+                  class="list-group-item"
+                  id="downfee"
+                  style="font-style: italic; color: #bebebe"
+                >
+                  手續費：
+                </li>
+              </div>
+              <div class="col-6" style="padding-left: 0">
+                <li
+                  class="list-group-item"
+                  id="tax"
+                  style="font-style: italic; color: #bebebe"
+                >
+                  稅：
+                </li>
+              </div>
             </div>
-            
-            <div class="col-5">
-                <ul class="list-group">
-                    <li class="list-group-item" id="up">多：</li>
-                    <li class="list-group-item" id="upfee" style="font-style: italic; color: #BEBEBE;">手續費：</li>
-                    <li class="list-group-item" id="down">空：</li>
-                    <div class="row">
-                        <div class="col-6" style="padding-right: 0;">
-                            <li class="list-group-item" id="downfee" style="font-style: italic; color: #BEBEBE;">手續費：</li>
-                        </div>
-                        <div class="col-6" style="padding-left: 0;">
-                            <li class="list-group-item" id="tax" style="font-style: italic; color: #BEBEBE;"> 稅：</li>
-                        </div>
-                    </div>
-                    <li class="list-group-item" id="summary">純利：</li>
-                </ul>
-            </div>
-
+            <li class="list-group-item" id="summary">純利：</li>
+          </ul>
         </div>
+      </div>
     </div>
 
-   
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
 
     <script>
-        $(document).ready(function(){
-            $('.header').height($(window).height());
-        })
+      $(document).ready(function () {
+        $('.header').height($(window).height());
+      });
 
-        let price =0, up=[], down=[], i=0,uptotal=0, downtotal=0, total=0, upfee=0, downfee=0, taxs=0, lot=1;
-        let add = (x) => {
-            if(x==1){
-                if(document.querySelector("#price").value==''){
-                    return 0;
-                }
-                price = document.querySelector("#price").value * -1;
-                if(document.querySelector("#lot").value!==''){
-                    lot = document.querySelector("#lot").value;
-                }
-                document.querySelector("#price").value = '';
-                document.querySelector("#lot").value = '1';
-            }else if(x==-1) {
-                if(document.querySelector("#price").value==''){
-                    return 0;
-                }
-                price = document.querySelector("#price").value;
-                if(document.querySelector("#lot").value!==''){
-                    lot = document.querySelector("#lot").value;
-                }
-                document.querySelector("#price").value = '';
-                document.querySelector("#lot").value = '1';
-            }
-            for(let j=0;j<lot;j++){
-                let node = document.createElement("li");
-                let textnode = document.createTextNode(price);
-                node.setAttribute('class','list-group-item');
-                node.appendChild(textnode);
-                document.querySelector("#list").appendChild(node);
-            }
-            
-            count(x);
+      let price = 0,
+        up = [],
+        down = [],
+        i = 0,
+        uptotal = 0,
+        downtotal = 0,
+        total = 0,
+        upfee = 0,
+        downfee = 0,
+        taxs = 0,
+        lot = 1;
+      let add = (x) => {
+        if (x == 1) {
+          if (document.querySelector('#price').value == '') {
+            return 0;
+          }
+          price = document.querySelector('#price').value * -1;
+          if (document.querySelector('#lot').value !== '') {
+            lot = document.querySelector('#lot').value;
+          }
+          document.querySelector('#price').value = '';
+          document.querySelector('#lot').value = '1';
+        } else if (x == -1) {
+          if (document.querySelector('#price').value == '') {
+            return 0;
+          }
+          price = document.querySelector('#price').value;
+          if (document.querySelector('#lot').value !== '') {
+            lot = document.querySelector('#lot').value;
+          }
+          document.querySelector('#price').value = '';
+          document.querySelector('#lot').value = '1';
+        }
+        for (let j = 0; j < lot; j++) {
+          let node = document.createElement('li');
+          let textnode = document.createTextNode(price);
+          node.setAttribute('class', 'list-group-item');
+          node.appendChild(textnode);
+          document.querySelector('#list').appendChild(node);
         }
 
-        let count = (x) =>{
-            if(x==1){
-                for(let a=0; a<lot; a++){
-                    uptotal=(price*1000)+uptotal;
-                    upfee += (price*1000)*0.001425*0.3*-1;
-                }
-                document.querySelector("#upfee").innerHTML = '手續費：' + Math.round(upfee);
-            }else if(x==-1){
-                for(let a=0; a<lot; a++){
-                    downtotal=(price*1000)+downtotal;
-                    downfee += (price*1000)*0.001425*0.3;
-                    taxs+=(price*1000)*0.003/2;
-                }
-                document.querySelector("#downfee").innerHTML = '手續費：' + Math.round(downfee);
-                document.querySelector("#tax").innerHTML = ' 稅：' + Math.round(taxs);
-            }
-            total = uptotal + downtotal - upfee - downfee - taxs;
-            document.querySelector("#up").innerHTML = '多：' + numberWithCommas(uptotal);
-            document.querySelector("#down").innerHTML = '空：' + numberWithCommas(downtotal);
-            document.querySelector("#summary").innerHTML = '純利：' + numberWithCommas(Math.round(total));
-        }
+        count(x);
+      };
 
-        let numberWithCommas = (x) =>{
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      let count = (x) => {
+        if (x == 1) {
+          for (let a = 0; a < lot; a++) {
+            uptotal = price * 1000 + uptotal;
+            upfee += price * 1000 * 0.001425 * 0.3 * -1;
+          }
+          document.querySelector('#upfee').innerHTML =
+            '手續費：' + Math.round(upfee);
+        } else if (x == -1) {
+          for (let a = 0; a < lot; a++) {
+            downtotal = price * 1000 + downtotal;
+            downfee += price * 1000 * 0.001425 * 0.3;
+            taxs += (price * 1000 * 0.003) / 2;
+          }
+          document.querySelector('#downfee').innerHTML =
+            '手續費：' + Math.round(downfee);
+          document.querySelector('#tax').innerHTML = ' 稅：' + Math.round(taxs);
         }
-/*---------------------------------------enter key---------------------------------------*/
-        // Execute a function when the user releases a key on the keyboard
-        var input = document.getElementById("price");
-        input.addEventListener("keyup", function(event) {
-            // Number 13 is the "Enter" key on the keyboard
-            if (event.ctrlKey && event.keyCode === 13) {
-                // Cancel the default action, if needed
-                event.preventDefault();
-                // Trigger the button element with a click
-                document.getElementById("sellbtn").click();
-            }else if (event.keyCode === 13){
-                event.preventDefault();
-                document.getElementById("buybtn").click();
-            }
-        });
-        
+        total = uptotal + downtotal - upfee - downfee - taxs;
+        document.querySelector('#up').innerHTML =
+          '多：' + numberWithCommas(uptotal);
+        document.querySelector('#down').innerHTML =
+          '空：' + numberWithCommas(downtotal);
+        document.querySelector('#summary').innerHTML =
+          '純利：' + numberWithCommas(Math.round(total));
+      };
+
+      let numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      };
+      /*---------------------------------------enter key---------------------------------------*/
+      // Execute a function when the user releases a key on the keyboard
+      var input = document.getElementById('price');
+      input.addEventListener('keyup', function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.ctrlKey && event.keyCode === 13) {
+          // Cancel the default action, if needed
+          event.preventDefault();
+          // Trigger the button element with a click
+          document.getElementById('sellbtn').click();
+        } else if (event.keyCode === 13) {
+          event.preventDefault();
+          document.getElementById('buybtn').click();
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
